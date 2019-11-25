@@ -19,17 +19,16 @@ public class WavePanel extends JPanel {
     private VirtualSample virtualSample = null;
     private boolean isVirtual = false;
 
-    private int MAX_SHOW_COUNT = 110;
+    private int maxShowCount = 110;
     private List<Integer> values = new ArrayList<>();
     private List<Integer> totalValues = new ArrayList<>();
     public int startPoint = 0;
     private int selectStartLine = -1;
     private int selectEndLine = -1;
-    private int integrate = 0;
 
     WavePanel(StatisticsWrap statisticsWrap) {
         this.setPreferredSize(new Dimension(660, 140));
-        this.virtualSample = new VirtualSample(values);
+        this.virtualSample = new VirtualSample(this);
         this.statisticsWrap = statisticsWrap;
         this.addMouseListener(new MouseAdapter() {
             @Override
@@ -64,7 +63,7 @@ public class WavePanel extends JPanel {
     }
 
     public void repaint(List<Integer> values) {
-        ((WavePanelWrap) getParent()).slider.setMaximum(Math.max(values.size() - MAX_SHOW_COUNT, 0));
+        ((WavePanelWrap) getParent()).slider.setMaximum(Math.max(values.size() - maxShowCount, 0));
         this.totalValues = values;
         this.values = totalValues;
         super.repaint();
@@ -79,7 +78,7 @@ public class WavePanel extends JPanel {
 
         int w = getWidth();
         int h = getHeight();
-        int xDelta = w / MAX_SHOW_COUNT;
+        int xDelta = w / maxShowCount;
         int length = values.size();
 
         g2d.setColor(Color.decode(ReadConfigUtils.configList.getOrDefault("horizontalLineColor", "#ff00000")));
@@ -93,21 +92,24 @@ public class WavePanel extends JPanel {
 
 
         int MAX_VALUE = 255;
-        integrate = 0;
+        int integrate = 0;
+        int total = 0;
         if (isVirtual) {
             for (int i = 0; i < length - 1; ++i) {
-                if ((MAX_SHOW_COUNT - length + i) * xDelta > selectStartLine && (MAX_SHOW_COUNT - length + i) * xDelta < selectEndLine) {
+                if ((maxShowCount - length + i) * xDelta > selectStartLine && (maxShowCount - length + i) * xDelta < selectEndLine) {
                     integrate += (values.get(i) + values.get(i + 1)) * xDelta / 2;
+                    total += values.get(i);
                     g2d.setColor(Color.GREEN);
                 }
-                g2d.drawLine(xDelta * (MAX_SHOW_COUNT - length + i), DataProcess.normalizeValueForYAxis(h, values.get(i), MAX_VALUE),
-                        xDelta * (MAX_SHOW_COUNT - length + i + 1), DataProcess.normalizeValueForYAxis(h, values.get(i + 1), MAX_VALUE));
+                g2d.drawLine(xDelta * (maxShowCount - length + i), DataProcess.normalizeValueForYAxis(h, values.get(i), MAX_VALUE),
+                        xDelta * (maxShowCount - length + i + 1), DataProcess.normalizeValueForYAxis(h, values.get(i + 1), MAX_VALUE));
                 g2d.setColor(Color.BLACK);
             }
         } else {
             for (int i = 0; i < length - 1; ++i) {
                 if (i * xDelta > selectStartLine && i * xDelta < selectEndLine) {
                     integrate += (values.get(i) + values.get(i + 1)) * xDelta / 2;
+                    total += values.get(i);
                     g2d.setColor(Color.GREEN);
                 }
                 g2d.drawLine(xDelta * i, DataProcess.normalizeValueForYAxis(h, values.get(i), MAX_VALUE),
@@ -117,16 +119,41 @@ public class WavePanel extends JPanel {
         }
 
         statisticsWrap.setIntegrateValue(integrate);
+        statisticsWrap.setMinimizeValue(selectEndLine - selectStartLine == 0? -1 : total / (selectEndLine - selectStartLine) * xDelta);
 
     }
 
     public void repaintWithNoValue() {
-        this.values = this.totalValues.stream().skip(startPoint).limit(MAX_SHOW_COUNT).collect(Collectors.toList());
+        this.values = this.totalValues.stream().skip(startPoint).limit(maxShowCount).collect(Collectors.toList());
         super.repaint();
     }
 
     public void toggleVirtual(){
         this.isVirtual = !isVirtual;
         this.virtualSample.toggleSampleState();
+    }
+
+    public boolean isVirtual() {
+        return isVirtual;
+    }
+
+    public void setVirtual(boolean virtual) {
+        isVirtual = virtual;
+    }
+
+    public int getMaxShowCount() {
+        return maxShowCount;
+    }
+
+    public void setMaxShowCount(int maxShowCount) {
+        this.maxShowCount = maxShowCount;
+    }
+
+    public void zoomUp(){
+        this.maxShowCount = maxShowCount / 2;
+    }
+
+    public void zoomDown(){
+        this.maxShowCount = maxShowCount * 2;
     }
 }

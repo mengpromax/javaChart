@@ -5,20 +5,20 @@ import java.util.List;
 import java.util.Random;
 
 public class VirtualSample {
-    private List<Integer> values = null;
+    private List<Integer> values = new ArrayList<>();
     private int maxCapacity = 110;
     private final int MAX_VALUE = 255;
     private boolean isRunning = false;
     private Thread virtualDataThread = null;
 
-    public VirtualSample(List<Integer> inputValue){
-        this.values = inputValue;
+    public VirtualSample(WavePanel wavePanel){
         virtualDataThread = new Thread(() -> {
             Random rand = new Random();
             try {
                 while (true) {
                     addValue(rand.nextInt(MAX_VALUE));
                     Thread.sleep(100);
+                    wavePanel.repaint(this.values);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

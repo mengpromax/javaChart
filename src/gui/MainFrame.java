@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
 
-    static StatisticsPanel statisticsPanel = null;
+    public static StatisticsPanel statisticsPanel = null;
     public static WavePanelContainer wavePanelContainer = null;
 
     public MainFrame(){

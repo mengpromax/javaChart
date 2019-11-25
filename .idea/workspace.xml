@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da78c8a6-c8cf-4acf-86df-d3b31dc84f3b" name="Default Changelist" comment="" />
+    <list default="true" id="da78c8a6-c8cf-4acf-86df-d3b31dc84f3b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/ChannelChoosePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/MainFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/StatisticsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/StatisticsPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/StatisticsWrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/StatisticsWrap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/WavePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/WavePanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/WavePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/WavePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/StatisticsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/StatisticsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/StatisticsWrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/StatisticsWrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/VirtualSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VirtualSample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/WavePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/WavePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/ZoomButtonContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/ZoomButtonContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/ZoomButtonGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/ZoomButtonGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listener/MainFrameActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/MainFrameActionListener.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +32,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -25,9 +45,14 @@
     </option>
   </component>
   <component name="ProjectId" id="1TunekFfGRbmamUNmzaiI92s9fW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
@@ -94,11 +119,22 @@
       <workItem from="1574646640819" duration="275000" />
       <workItem from="1574649928975" duration="268000" />
       <workItem from="1574661739070" duration="2738000" />
-      <workItem from="1574665915888" duration="2058000" />
+      <workItem from="1574665915888" duration="12244000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

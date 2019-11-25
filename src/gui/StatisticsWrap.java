@@ -7,7 +7,7 @@ public class StatisticsWrap extends Panel {
     private JLabel integrate;
     private JLabel minimize;
     private int integrateValue = -1;
-    private int minimizeValue = -1;
+    private int meanValue = -1;
     StatisticsWrap(){
         this.setPreferredSize(new Dimension(180,25));
         integrate = new JLabel();
@@ -25,17 +25,17 @@ public class StatisticsWrap extends Panel {
         return integrateValue;
     }
 
-    public void setIntegrateValue(int integrateValue) {
+    void setIntegrateValue(int integrateValue) {
         this.integrateValue = integrateValue;
-        this.integrate.setText("积分:" + this.integrateValue);
+        this.integrate.setText("积分:" + integrateValue);
     }
 
     public int getMinimizeValue() {
-        return minimizeValue;
+        return meanValue;
     }
 
-    public void setMinimizeValue(int minimizeValue) {
-        this.minimizeValue = minimizeValue;
-        this.minimize.setText("最小值：" + this.minimizeValue);
+    void setMinimizeValue(int meanValue) {
+        this.meanValue = meanValue;
+        this.minimize.setText("平均值：" + this.meanValue);
     }
 }
