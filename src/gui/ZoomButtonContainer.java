@@ -12,7 +12,7 @@ public class ZoomButtonContainer extends JPanel {
     ZoomButtonContainer(){
 
         this.setPreferredSize(new Dimension(190,140));
-        this.setBorder(new TitledBorder("波形图缩放"));
+        this.setBorder(new TitledBorder("波形图压缩/拉伸"));
 
         leftZoomButtonGroup = new ZoomButtonGroup();
         leftZoomButtonGroup.setBorder(BorderFactory.createTitledBorder("一通道"));

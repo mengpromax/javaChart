@@ -8,7 +8,7 @@ public class ReadConfigUtils {
     public static Map<String,String> configList = new HashMap<>();
     private static String ROOT = System.getProperty("user.dir");
     public static void initConfigList(){
-        String fileName = "serverConfig.properties";
+        String fileName = "chartConfig.properties";
         String configFilePath = ROOT + "/src/" + fileName;
         try {
             InputStream inputStream = new FileInputStream(new File(configFilePath));

@@ -3,6 +3,7 @@ package listener;
 import gui.ChannelChoosePanel;
 import gui.MainFrame;
 import gui.WavePanelWrap;
+import utils.DataProcess;
 import utils.ReadFile;
 
 import javax.swing.*;
@@ -77,7 +78,12 @@ public class MainFrameActionListener implements ActionListener {
             case "comboBoxChanged":
                 JComboBox<String> tempComboBox = ((JComboBox<String>) e.getSource());
                 int seleceIndex = tempComboBox.getSelectedIndex();
+                MainFrame.statisticsPanel.getZoomFactorPanel().reset();
                 ((ChannelChoosePanel) tempComboBox.getParent()).setSelectedIndex(seleceIndex);
+                break;
+            case "积分运算":
+                List<Integer> differentialValue = DataProcess.differentialValue(wavePanelWrapList.get(MainFrame.statisticsPanel.getChannelChoosePanel().getSelectedIndex()).wavePanel.getValues());
+                wavePanelWrapList.get(MainFrame.statisticsPanel.getChannelChoosePanel().getSelectedIndex()).wavePanel.repaint(differentialValue);
                 break;
         }
 

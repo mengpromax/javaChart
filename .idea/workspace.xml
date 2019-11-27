@@ -2,22 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da78c8a6-c8cf-4acf-86df-d3b31dc84f3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/ChannelChoosePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/ZoomFactorPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/config/ReadConfigUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/config/ReadConfigUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/chart/gui/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/MainFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/StatisticsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/StatisticsPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/StatisticsWrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/StatisticsWrap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/VirtualSample.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/VirtualSample.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/chart/gui/WavePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/WavePanel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/chart/gui/WavePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/WavePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/ZoomButtonContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/ZoomButtonContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/gui/ZoomButtonGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/gui/ZoomButtonGroup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/listener/MainFrameActionListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/listener/MainFrameActionListener$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/listener/MainFrameActionListener$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/listener/MainFrameActionListener$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/listener/MainFrameActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/listener/MainFrameActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/serverConfig.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chart/utils/DataProcess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chart/utils/DataProcess.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ReadConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ReadConfigUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/StatisticsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/StatisticsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/StatisticsWrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/StatisticsWrap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/VirtualSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VirtualSample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/WavePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/WavePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/ZoomButtonContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/ZoomButtonContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/ZoomButtonGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/ZoomButtonGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/listener/MainFrameActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/MainFrameActionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listener/SliderChangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/SliderChangeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serverConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/chartConfig.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/DataProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/DataProcess.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +128,13 @@
       <workItem from="1574646640819" duration="275000" />
       <workItem from="1574649928975" duration="268000" />
       <workItem from="1574661739070" duration="2738000" />
-      <workItem from="1574665915888" duration="12244000" />
+      <workItem from="1574665915888" duration="12378000" />
+      <workItem from="1574729335145" duration="665000" />
+      <workItem from="1574736687607" duration="1440000" />
+      <workItem from="1574748989306" duration="6596000" />
+      <workItem from="1574767502247" duration="182000" />
+      <workItem from="1574817984056" duration="1716000" />
+      <workItem from="1574820283971" duration="3245000" />
     </task>
     <servers />
   </component>
@@ -131,7 +146,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

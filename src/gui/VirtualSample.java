@@ -37,7 +37,7 @@ public class VirtualSample {
         values.add(value);
     }
 
-    public void toggleSampleState(){
+    void toggleSampleState(){
         if (isRunning){
             virtualDataThread.suspend();
         }else{

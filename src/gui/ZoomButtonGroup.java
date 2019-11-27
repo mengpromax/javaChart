@@ -4,7 +4,6 @@ import listener.MainFrameActionListener;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.plaf.metal.MetalScrollButton;
 import java.awt.*;
 
 public class ZoomButtonGroup extends JPanel {

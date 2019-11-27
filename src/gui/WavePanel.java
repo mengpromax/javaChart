@@ -15,9 +15,12 @@ import config.ReadConfigUtils;
 public class WavePanel extends JPanel {
 
     private StatisticsWrap statisticsWrap = null;
-
+    
     private VirtualSample virtualSample = null;
     private boolean isVirtual = false;
+    private int maxValue = 255;
+    private int minValue = 0;
+
 
     private int maxShowCount = 110;
     private List<Integer> values = new ArrayList<>();
@@ -25,6 +28,8 @@ public class WavePanel extends JPanel {
     public int startPoint = 0;
     private int selectStartLine = -1;
     private int selectEndLine = -1;
+    private double zoomFactor = 0;//缩放比例
+
 
     WavePanel(StatisticsWrap statisticsWrap) {
         this.setPreferredSize(new Dimension(660, 140));
@@ -80,9 +85,12 @@ public class WavePanel extends JPanel {
         int h = getHeight();
         int xDelta = w / maxShowCount;
         int length = values.size();
+        int fontWidth = 0;
 
-        g2d.setColor(Color.decode(ReadConfigUtils.configList.getOrDefault("horizontalLineColor", "#ff00000")));
-        g2d.drawLine(0, h / 2, w, h / 2);
+        g2d.setColor(Color.decode(ReadConfigUtils.configList.getOrDefault("horizontalLineColor", "#00ff00")));
+        fontWidth = SwingUtilities.computeStringWidth(g2d.getFontMetrics(), String.valueOf(0.5 * (maxValue - minValue)));
+        g2d.drawLine(fontWidth + 5, h / 2, w, h / 2);
+        g2d.drawString(String.valueOf(0.5 * (maxValue - minValue)),0,(int)(0.5 * h) + g2d.getFontMetrics().getHeight() / 4);
         g2d.setColor(Color.BLUE);
         g2d.setStroke(new BasicStroke(1.50f));
         g2d.drawLine(selectStartLine, 10, selectStartLine, getHeight() - 10);
@@ -91,19 +99,40 @@ public class WavePanel extends JPanel {
         g2d.setStroke(new BasicStroke(1.0f));
 
 
-        int MAX_VALUE = 255;
+        if (values.size() != 0) {
+            maxValue = (int) (values.stream().max(Integer::compare).get() + zoomFactor * (values.stream().max(Integer::compare).get() - values.stream().min(Integer::compare).get()) / 16);
+            minValue = (int) (values.stream().min(Integer::compare).get() - zoomFactor * (values.stream().max(Integer::compare).get() - values.stream().min(Integer::compare).get()) / 16);
+        }
         int integrate = 0;
         int total = 0;
+        g2d.setStroke(new BasicStroke(0.2f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[]{3.0f, 3.0f}, 5.0f));
+        g2d.setFont(new Font("Arial", Font.BOLD, 10));
+        for (int i = 0;i < maxShowCount;i++){
+            g2d.drawLine(xDelta * i, 0, xDelta * i,h);
+            if (i % 20 == 0){
+                fontWidth = SwingUtilities.computeStringWidth(g2d.getFontMetrics(), String.valueOf(i));
+                g2d.drawString(String.valueOf(i),xDelta * i + fontWidth / 2,h);
+            }
+        }
+        g2d.setStroke(new BasicStroke(0.5f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[]{3.0f, 10.0f}, 1.0f));
+        g2d.setFont(new Font("Arial", Font.BOLD, 10));
+        g2d.drawString(String.valueOf(0.75 * (maxValue - minValue)),0,(int)(0.25 * h) + g2d.getFontMetrics().getHeight() / 4);
+        fontWidth = SwingUtilities.computeStringWidth(g2d.getFontMetrics(), String.valueOf(0.75 * (maxValue - minValue)));
+        g2d.drawLine(xDelta + fontWidth + 5,(int)(0.75 * h),w - xDelta,(int)(0.75 * h));
+        fontWidth = SwingUtilities.computeStringWidth(g2d.getFontMetrics(), String.valueOf(0.25 * (maxValue - minValue)));
+        g2d.drawString(String.valueOf(0.25 * (maxValue - minValue)),0,(int)(0.75 * h) + g2d.getFontMetrics().getHeight() / 4);
+        g2d.drawLine(xDelta + fontWidth + 5,(int)(0.25 * h),w - xDelta,(int)(0.25 * h));
+        g2d.setStroke(new BasicStroke(1.0f));
         if (isVirtual) {
             for (int i = 0; i < length - 1; ++i) {
                 if ((maxShowCount - length + i) * xDelta > selectStartLine && (maxShowCount - length + i) * xDelta < selectEndLine) {
                     integrate += (values.get(i) + values.get(i + 1)) * xDelta / 2;
                     total += values.get(i);
-                    g2d.setColor(Color.GREEN);
+                    g2d.setColor(Color.decode(ReadConfigUtils.configList.getOrDefault("selectedLineColor", "#00ff00")));
                 }
-                g2d.drawLine(xDelta * (maxShowCount - length + i), DataProcess.normalizeValueForYAxis(h, values.get(i), MAX_VALUE),
-                        xDelta * (maxShowCount - length + i + 1), DataProcess.normalizeValueForYAxis(h, values.get(i + 1), MAX_VALUE));
-                g2d.setColor(Color.BLACK);
+                g2d.drawLine(xDelta * (maxShowCount - length + i), DataProcess.normalizeValueForYAxis(h, values.get(i), maxValue, minValue),
+                        xDelta * (maxShowCount - length + i + 1), DataProcess.normalizeValueForYAxis(h, values.get(i + 1), maxValue, minValue));
+                g2d.setColor(Color.decode(ReadConfigUtils.configList.getOrDefault("waveLineColor", "#000000")));
             }
         } else {
             for (int i = 0; i < length - 1; ++i) {
@@ -111,10 +140,11 @@ public class WavePanel extends JPanel {
                     integrate += (values.get(i) + values.get(i + 1)) * xDelta / 2;
                     total += values.get(i);
                     g2d.setColor(Color.GREEN);
+                    g2d.setColor(Color.decode(ReadConfigUtils.configList.getOrDefault("selectedLineColor", "#00ff00")));
                 }
-                g2d.drawLine(xDelta * i, DataProcess.normalizeValueForYAxis(h, values.get(i), MAX_VALUE),
-                        xDelta * (i + 1), DataProcess.normalizeValueForYAxis(h, values.get(i + 1), MAX_VALUE));
-                g2d.setColor(Color.BLACK);
+                g2d.drawLine(xDelta * i, DataProcess.normalizeValueForYAxis(h, values.get(i), maxValue, minValue),
+                        xDelta * (i + 1), DataProcess.normalizeValueForYAxis(h, values.get(i + 1), maxValue, minValue));
+                g2d.setColor(Color.decode(ReadConfigUtils.configList.getOrDefault("waveLineColor", "#000000")));
             }
         }
 
@@ -147,13 +177,35 @@ public class WavePanel extends JPanel {
 
     public void setMaxShowCount(int maxShowCount) {
         this.maxShowCount = maxShowCount;
+        virtualSample.setMaxCapacity(maxShowCount);
     }
 
     public void zoomUp(){
+        virtualSample.setMaxCapacity(maxShowCount);
         this.maxShowCount = maxShowCount / 2;
+        this.repaintWithNoValue();
     }
 
     public void zoomDown(){
+        virtualSample.setMaxCapacity(maxShowCount);
         this.maxShowCount = maxShowCount * 2;
+        this.repaintWithNoValue();
+    }
+
+    public List<Integer> getValues() {
+        return values;
+    }
+
+    public void setValues(List<Integer> values) {
+        this.values = values;
+    }
+
+    public double getZoomFactor() {
+        return zoomFactor;
+    }
+
+    public void setZoomFactor(double zoomFactor) {
+        this.zoomFactor = zoomFactor;
+        this.repaintWithNoValue();
     }
 }

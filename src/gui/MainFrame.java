@@ -41,10 +41,16 @@ public class MainFrame extends JFrame {
     private void initMenu(){
         JMenuBar menuBar = new JMenuBar();
         JMenu open = new JMenu("打开");
-        JMenu statistics = new JMenu("统计数据");
+        JMenu statistics = new JMenu("数据处理");
+
+        JMenuItem differential = new JMenuItem("积分运算");
+
         JMenuItem fromFile = new JMenuItem("从文件打开");
         JMenuItem fromVirtualMachine = new JMenuItem("模拟实时采集");
         MainFrameActionListener listener = new MainFrameActionListener();
+
+        differential.addActionListener(listener);
+        statistics.add(differential);
         fromFile.addActionListener(listener);
         fromVirtualMachine.addActionListener(listener);
         open.add(fromFile);
