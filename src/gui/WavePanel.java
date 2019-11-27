@@ -100,8 +100,8 @@ public class WavePanel extends JPanel {
 
 
         if (values.size() != 0) {
-            maxValue = (int) (values.stream().max(Integer::compare).get() + zoomFactor * (values.stream().max(Integer::compare).get() - values.stream().min(Integer::compare).get()) / 16);
-            minValue = (int) (values.stream().min(Integer::compare).get() - zoomFactor * (values.stream().max(Integer::compare).get() - values.stream().min(Integer::compare).get()) / 16);
+            maxValue = (int) (values.stream().max(Integer::compare).get() - zoomFactor * (values.stream().max(Integer::compare).get() - values.stream().min(Integer::compare).get()) / 16);
+            minValue = (int) (values.stream().min(Integer::compare).get() + zoomFactor * (values.stream().max(Integer::compare).get() - values.stream().min(Integer::compare).get()) / 16);
         }
         int integrate = 0;
         int total = 0;

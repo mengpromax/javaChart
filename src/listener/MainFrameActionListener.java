@@ -82,6 +82,8 @@ public class MainFrameActionListener implements ActionListener {
                 ((ChannelChoosePanel) tempComboBox.getParent()).setSelectedIndex(seleceIndex);
                 break;
             case "积分运算":
+                if (wavePanelWrapList.get(MainFrame.statisticsPanel.getChannelChoosePanel().getSelectedIndex()).wavePanel.isVirtual())
+                    return;
                 List<Integer> differentialValue = DataProcess.differentialValue(wavePanelWrapList.get(MainFrame.statisticsPanel.getChannelChoosePanel().getSelectedIndex()).wavePanel.getValues());
                 wavePanelWrapList.get(MainFrame.statisticsPanel.getChannelChoosePanel().getSelectedIndex()).wavePanel.repaint(differentialValue);
                 break;
