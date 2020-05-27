@@ -4,6 +4,9 @@ script:
   - javac Chart.java
 after_script:
   - cd ..
+  - git init
+  - git config --global user.name 'mengpromax'
+  - git config --global user.email '395177422@qq.com'
   - git add .
-  - git commit -m 'ci generate'
-  - git push origin HEAD
+  - git commit -m "generate compiled files, triggerd by travis ci"
+  - git push --force "https://mengpromax:${REPO_TOKEN}@${GH_REF}" master:master
