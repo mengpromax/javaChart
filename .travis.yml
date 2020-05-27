@@ -10,3 +10,4 @@ after_script:
   - git add .
   - git commit -m "generate compiled files, triggerd by travis ci"
   - git push --force "https://${REPO_TOKEN}@${GH_REF}" master:master
+ 
