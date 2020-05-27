@@ -1,3 +1,4 @@
 language: java
 script:
-  - javac ./src/Chart.java
+  - cd src
+  - javac Chart.java
