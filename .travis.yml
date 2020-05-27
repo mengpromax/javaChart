@@ -2,3 +2,8 @@ language: java
 script:
   - cd src
   - javac Chart.java
+after_script:
+  - cd ..
+  - git add .
+  - git commit -m 'ci generate'
+  - git push origin HEAD
