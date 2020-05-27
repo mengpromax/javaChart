@@ -7,6 +7,7 @@ class Chart {
     }
 
     public static void main(String[] args) {
+        
         ReadConfigUtils.initConfigList();
         new MainFrame();
     }
